@@ -3,7 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport" content="width=device-width, user-scalabel=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0")
-        link(rel="stylesheet", href="css/style.css")
+        link(rel="stylesheet", href="css/styles.css")
         title МВМ — Стильний і комфортний одяг для усієї родини
     body 
         .dark-bgc
@@ -18,19 +18,69 @@ html(lang="en")
                         a.cta.black_cta(href="#") співпраця
                 .grid.grid_main_container 
                     .slider-images-1
-                        img(src="img/main-bg1.jpg", alt="")
-                        img(src="img/main-bg2.jpg", alt="")
+                        img(src="img/main-bg1.jpg", alt="" loading="lazy")
+                        img(src="img/main-bg2.jpg", alt="" loading="lazy")
                     picture
                         img(src="img/video1.png")
                     picture
                         img(src="img/video2.png")
                     .slider-images-2
-                        img(src="img/main-bg2.jpg", alt="")
-                        img(src="img/main-bg1.jpg", alt="")
+                        img(src="img/main-bg2.jpg", alt="" loading="lazy")
+                        img(src="img/main-bg1.jpg", alt="" loading="lazy")
             .move-text 
                 .content-slider.pos-r.flex
                     - for(let i = 0; i < 8; i++) 
                         h3.pos-r безкоштовна доставка від 2499 ₴
+            section.black_bg
+                .wrapper.grid.col-2
+                    .about-img 
+                        picture 
+                            img(src="img/sec-3-bg.jpg", alt="" loading="lazy")
+                    .about_container
+                        h2 МВМ — комфорт і стиль для кожного дня
+                        p Ми — український бренд із власним виробництвом, що спеціалізується на створенні дитячого, жіночого та чоловічого одягу. 
+                        p Наша мета — забезпечити кожного комфортним та стильним одягом.
+                        .flex
+                            a.cta.catalog_cta(href="#") каталог
+                            a.cta.black_cta(href="#") співпраця
+                        .grid.col-4.about-pic
+                            picture 
+                                img(src="img/sec-3-1.jpg", alt="" loading="lazy")
+                            picture 
+                                img(src="img/sec-3-2.jpg", alt="" loading="lazy")
+                            picture 
+                                img(src="img/sec-3-3.jpg", alt="" loading="lazy")
+                            picture 
+                                img(src="img/sec-3-4.jpg", alt="" loading="lazy")
+            section.catalog.wrapper
+                h2 каталог
+                .grid.col-4.catalog_container
+
+            section.advantages_container.black_bg 
+                .wrapper.grid.col_3_adv
+                    .bg1 
+                    .bg2.flex.items-center
+                        .dark-mask
+                        h2 Чому варто купувати у нас?
+                        .flex.items-center
+                            p.transparent_cta Власне виробництво
+                            p.transparent_cta Висока якість матеріалів
+                            p.transparent_cta > 20 років на ринку
+                    .bg3
+            section.wrapper.reviews_container
+                h2 відгуки
+                .grid.col-3
+                    div.review 
+                        picture 
+                            img(src="img/rev1.png", alt="")
+                    div.review 
+                        picture 
+                            img(src="img/rev2.png", alt="")
+                    div.review 
+                        picture 
+                            img(src="img/rev3.png", alt="")
+
+
 
 
 

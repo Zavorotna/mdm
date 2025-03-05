@@ -6,8 +6,10 @@ header
 .logo
     a
         color: $black
-        font-size: 18rem
+        font-size: 14rem
         line-height: 1em
+        +media(1300)
+            font-size: 18rem
         picture
             display: inline-block
             width: 90rem
@@ -43,9 +45,9 @@ header
     color: $black
     text-transform: uppercase
     +media(1024)
-        gap: 30rem
         display: flex
         justify-content: space-between
+        gap: 20rem
     li
         padding-bottom: 10px
         +media(1024)
@@ -54,6 +56,10 @@ header
         position: relative
         display: block
         color: $black
+        +media(1024)
+            font-size: 12px
+        +media(1300)
+            font-size: 14rem
         &::before
             content: ""
             position: absolute
