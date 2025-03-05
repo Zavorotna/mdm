@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     /*move text page*/
     const carousel = document.querySelector('.content-slider')
     if (document.querySelector(".content-slider h3")) {
@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const images1 = document.querySelectorAll('.slider-images-1 img'),
             images2 = document.querySelectorAll('.slider-images-2 img')
         let currentImgIndex = 0;
-    
+
         images1[0].classList.add('active')
         images2[0].classList.add('active')
-    
+
         setInterval(() => {
             images1[currentImgIndex].classList.remove('active')
             images2[currentImgIndex].classList.remove('active')
@@ -58,16 +58,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //burger
-    if(document.querySelector(".burger")) {
+    if (document.querySelector(".burger")) {
         const dark = document.querySelector(".dark-bgc"),
-          burger = document.querySelector(".burger"),
-          menu = document.querySelector(".nav"),
-          cancel = document.querySelector(".cancel")
-    
-        burger.addEventListener("click", function() {
+            burger = document.querySelector(".burger"),
+            menu = document.querySelector(".nav"),
+            cancel = document.querySelector(".cancel")
+
+        burger.addEventListener("click", function () {
             menu.style.left = "0";
             dark.style.display = "block"
         })
+
         function cancelBurger() {
             menu.style.left = "-100%";
             dark.style.display = "none"
@@ -76,7 +77,60 @@ document.addEventListener("DOMContentLoaded", function() {
         dark.addEventListener("click", cancelBurger)
     }
 
+    // випадаючі блоки з інформацією
+    function toggleVisibility(buttons, visibleClass, activeClass) {
+        buttons.forEach((item) => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault()
+                const descriptionMore = item.nextElementSibling
+                descriptionMore.classList.toggle(visibleClass)
+                item.classList.toggle(activeClass)
+            })
+        })
+    }
 
+    const btnReadMore = document.querySelectorAll(".readmore")
+
+    toggleVisibility(btnReadMore, "visible", "readmore-active")
+
+    //btn for block info
+    const buttons = document.querySelectorAll('.nav a '),
+        sections = document.querySelectorAll('#spivpracia, #delivery, #obmin')
+    let activeSection = null
+
+    function hideAllSections() {
+        sections.forEach(section => section.classList.remove('visible'))
+    }
+
+    function deactivateAllButtons() {
+        buttons.forEach(button => button.classList.remove('visible'))
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            const target = button.getAttribute('data-target')
+
+            hideAllSections()
+            deactivateAllButtons()
+
+            const sectionToShow = document.getElementById(target)
+            if (sectionToShow) {
+                if (activeSection && activeSection.previousElementSibling) {
+                    activeSection.previousElementSibling.classList.remove('readmore-active')
+                }
     
+                sectionToShow.classList.add('visible')
+                if (sectionToShow.previousElementSibling) {
+                    sectionToShow.previousElementSibling.classList.add('readmore-active')
+                }
+    
+                activeSection = sectionToShow
+            }
+        })
+    })
+
+    hideAllSections()
+    deactivateAllButtons()
+
 
 })

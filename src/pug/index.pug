@@ -7,10 +7,51 @@ html(lang="en")
         title МВМ — Стильний і комфортний одяг для усієї родини
     body 
         .dark-bgc
+        .cart_popup
+            a.cancel_cart(href="#")
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1 15L14.7071 1M15 15L1.29291 1" stroke="#121212" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            form(action="sendorder.php" method="post")
+                .data
+                    .name
+                        label(for='name')  
+                        input#name(type='text' name='userName' minlength='3' maxlength='30' placeholder='введіть ваше імʼя*' required='' oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐs]/g, '')")
+                    .phone
+                        label(for='phone')  
+                        input#phone.inputMask(type='tel' name='userPhone' placeholder='введіть ваш телефон*' required='' maxlength='13')
+                    input(type="hidden" name="cartData" id="cartData")
+                    input(type="hidden" id="orderWebsiteURL" name="orderWebsiteURL")
+                .order
+                    p.cart-head ваше замовлення:
+                    a.addtocart.white-head.head(href='#catalog') додати товар
+                        span.gradient.add-cta +
+                    .cart-container.grid.items-center
+                        p.cart_img
+                            picture 
+                                img(src="", alt="")
+                        div.grid.col-4.items-center
+                            h3.title_cart 
+                            p.color_cart.flex.items-center
+                                span.color_text
+                                span.color_circle 
+                            p.size
+                            .flex.items-center
+                                p.price.price_cart
+                                a.delete_cta(href="#") 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                        <path d="M21.875 6.22967C18.4062 5.88592 14.9167 5.70883 11.4375 5.70883C9.375 5.70883 7.3125 5.813 5.25 6.02133L3.125 6.22967" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.854 5.17709L9.08317 3.81251C9.24984 2.82293 9.37484 2.08334 11.1353 2.08334H13.8644C15.6248 2.08334 15.7603 2.86459 15.9165 3.82293L16.1457 5.17709" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M19.6361 9.52048L18.959 20.0101C18.8444 21.6455 18.7506 22.9163 15.8444 22.9163H9.1569C6.25065 22.9163 6.1569 21.6455 6.04232 20.0101L5.36523 9.52048" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10.7607 17.1875H14.2295" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9.896 13.0208H15.1043" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                .wrapper.tac_form_btn
+                    button(type="submit").submit-btn Оформити замовлення
         include components/header 
         main 
             section.black_bg.main_section
-                div.flex.items-center.main_container
+                div.flex.main_container
                     h1 Стильний і комфортний одяг для усієї родини
                     p Гурт та роздріб
                     .flex.cta_main
@@ -79,7 +120,9 @@ html(lang="en")
                     div.review 
                         picture 
                             img(src="img/rev3.png", alt="")
-
+            section.info_container.wrapper
+                h2 інформація
+                include components/information
 
 
 

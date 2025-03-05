@@ -1,0 +1,45 @@
+.data
+    div
+        min-width: 50%
+        margin-bottom: 10px
+    +media(768)
+        display: flex
+        gap: 10px
+        justify-content: space-between
+
+.cart_popup
+    position: fixed
+    top: 50%
+    left: 50%
+    display: none
+    padding: 70rem
+    width: 90vw
+    background-color: $white
+    transform: translate(-50%, -50%)
+    z-index: 3
+    +media(1024)
+        width: 60vw
+
+.cancel_cart
+    position: absolute
+    top: 15px
+    right: 15px
+.cart-head
+    padding-bottom: 10rem
+    font-size: 18rem
+    font-weight: 700
+    text-transform: uppercase
+
+.cart-container
+    grid-template-columns: 1fr 4fr
+    p
+        padding-bottom: 0
+
+.color_cart
+    gap: 5px
+
+.color_circle 
+    display: inline-block
+    width: 20rem
+    height: 20rem
+    border-radius: 50%

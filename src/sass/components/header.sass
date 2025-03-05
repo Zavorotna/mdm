@@ -33,7 +33,7 @@ header
     width: 70vw
     height: 100vh
     padding: 20px
-    z-index: 2
+    z-index: 3
     background-color: $white
     transition: all .5s ease
     +media(1024)
@@ -41,6 +41,7 @@ header
         width: auto
         height: auto
         padding: 0
+        z-index: 0
 .menu
     color: $black
     text-transform: uppercase
@@ -55,8 +56,11 @@ header
     a
         position: relative
         display: block
+        line-height: 2em
         color: $black
         +media(1024)
+            text-align: center
+            line-height: 1em
             font-size: 12px
         +media(1300)
             font-size: 14rem
@@ -100,7 +104,7 @@ li.cancel_li
     height: 100%
     background-color: rgba(0, 0, 0, 0.3)
     backdrop-filter: blur(4px)
-    z-index: 1
+    z-index: 3
 
 .header 
     position: relative

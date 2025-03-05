@@ -7,13 +7,12 @@
     box-sizing: border-box
 
 html
-    font-size: 0.8px
-    +media(1024)
+    font-size: 0.7px
+    scroll-behavior: smooth
+    +media(1250)
         font-size: 1px
     +media(1600)
         font-size: 1.2px
-    +media(1900)
-        font-size: 1.5px
 
 body
     font-size: 14rem
@@ -37,7 +36,14 @@ h2
 input,
 textarea
     appearance: none
+    width: 100%
     outline: none
+
+input[type='text'],
+input[type='tel']
+    padding: 17rem 10rem
+    border-radius: 3px
+    border: 1px solid #CABABA
 
 .wrapper
     width: 95%
@@ -86,10 +92,13 @@ img
     line-height: normal
     text-transform: uppercase
     +media(768)
-        width: 240rem
+        width: 45%
+
 
 @import components/header
 @import components/card
+@import components/cart
+
 .main_section
     margin-bottom: 13px
 
@@ -106,6 +115,7 @@ img
         padding: 20rem 0
         font-size: 24px
         font-weight: 400
+
 .move-text
     margin-bottom: 13rem
     padding: 30rem 0
@@ -133,6 +143,9 @@ img
 .cta_main
     flex-wrap: wrap
     justify-content: center
+    +media(768)
+        width: 50%
+        margin: 0 auto
 
 .catalog_cta
     color: $black
@@ -184,14 +197,20 @@ img
 
 .about_container
     padding: 70rem 0
+    h2
+        +media(768)
+            text-align: left
     .flex
         flex-wrap: wrap
         justify-content: center
+        +media(768)
+            justify-content: flex-start
     p
         padding-bottom: 20rem
         font-size: 18rem
         &:nth-child(3)
             padding-bottom: 36rem
+
 .about-pic
     padding-top: 50rem
     img
@@ -270,3 +289,18 @@ img
     border-radius: 5px
     border: 1px solid $black
     overflow: hidden
+
+.submit-btn
+    padding: 8px 20px
+    color: $white
+    border-radius: 3px
+    border: 1px solid $black
+    background: $black
+
+.tac_form_btn
+    padding-top: 20px
+    text-align: center
+
+
+
+@import components/info
