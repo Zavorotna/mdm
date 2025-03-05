@@ -22,7 +22,7 @@ header
 .desctop_contacts
     display: none
     +media(1024)
-        display: block
+        display: flex
 
 .nav
     position: fixed
@@ -36,14 +36,16 @@ header
     transition: all .5s ease
     +media(1024)
         position: static
+        width: auto
+        height: auto
+        padding: 0
 .menu
     color: $black
     text-transform: uppercase
     +media(1024)
-        gap: 50rem
+        gap: 30rem
         display: flex
-        width: 100%
-        height: auto
+        justify-content: space-between
     li
         padding-bottom: 10px
         +media(1024)
@@ -78,7 +80,8 @@ header
         path
             stroke: $black
 
-.mobile_contacts
+.mobile_contacts,
+li.cancel_li
     +media(1024)
         display: none
 
