@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, user-scalabel=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0")
+        link(rel="stylesheet", href="css/style.css")
+        title МВМ — Стильний і комфортний одяг для усієї родини
+    body 
+        .dark-bgc
+        include components/header 
+        main 
+            section.black_bg.main_section
+                div.flex.items-center.main_container
+                    h1 Стильний і комфортний одяг для усієї родини
+                    p Гурт та роздріб
+                    .flex.cta_main
+                        a.cta.catalog_cta(href="#") каталог
+                        a.cta.black_cta(href="#") співпраця
+                .grid.grid_main_container 
+                    .slider-images-1
+                        img(src="img/main-bg1.jpg", alt="")
+                        img(src="img/main-bg2.jpg", alt="")
+                    picture
+                        img(src="img/video1.png")
+                    picture
+                        img(src="img/video2.png")
+                    .slider-images-2
+                        img(src="img/main-bg2.jpg", alt="")
+                        img(src="img/main-bg1.jpg", alt="")
+            .move-text 
+                .content-slider.pos-r.flex
+                    - for(let i = 0; i < 8; i++) 
+                        h3.pos-r безкоштовна доставка від 2499 ₴
+
+
+
+
+        include components/footer
+        script(src="js/scripts.js") 
