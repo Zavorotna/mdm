@@ -77,7 +77,7 @@ html(lang="en")
                     .about-img 
                         picture 
                             img(src="img/sec-3-bg.jpg", alt="" loading="lazy")
-                    .about_container
+                    .about_container.container
                         h2 МВМ — комфорт і стиль для кожного дня
                         p Ми — український бренд із власним виробництвом, що спеціалізується на створенні дитячого, жіночого та чоловічого одягу. 
                         p Наша мета — забезпечити кожного комфортним та стильним одягом.
@@ -93,7 +93,7 @@ html(lang="en")
                                 img(src="img/sec-3-3.jpg", alt="" loading="lazy")
                             picture 
                                 img(src="img/sec-3-4.jpg", alt="" loading="lazy")
-            section.catalog.wrapper
+            section.catalog.wrapper.container
                 h2 каталог
                 .grid.col-4.catalog_container
 
@@ -108,7 +108,7 @@ html(lang="en")
                             p.transparent_cta Висока якість матеріалів
                             p.transparent_cta > 20 років на ринку
                     .bg3
-            section.wrapper.reviews_container
+            section.wrapper.reviews_container.container
                 h2 відгуки
                 .grid.col-3
                     div.review 
@@ -120,13 +120,20 @@ html(lang="en")
                     div.review 
                         picture 
                             img(src="img/rev3.png", alt="")
-            section.info_container.wrapper
+            section.info_container.wrapper.container
                 h2 інформація
                 include components/information
-
-
-
-
+            section.container.black_bg
+                .wrapper.start_buisnes
+                    h2 розпочніть прибутковий бізнес з MBM!
+                    p Співпрацювати з нами по опту — це вигідно, зручно та надійно! Ми є виробником, тому гарантуємо високу якість флісових костюмів за найкращими цінами. Пропонуємо широкий асортимент моделей, швидку доставку по Україні та гнучкі умови для кожного партнера.
+                    .grid.col-3.items-center
+                        p.transparent_cta Товар у наявності
+                        p.transparent_cta Вигідні ціни
+                        p.transparent_cta Повернення та обмін товару
+            section.wrapper.container 
+                h2 контакти
+                include components/contacts
 
         include components/footer
         script(src="js/scripts.js") 

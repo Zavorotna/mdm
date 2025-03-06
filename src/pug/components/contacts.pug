@@ -1,42 +1,9 @@
-footer.black_bg 
-    .wrapper.grid.items-center.footer
-        nav.nav_footer 
-            h3 клієнтам
-            ul.menu.menu_footer
-                li 
-                    a(href="#spivpracia" data-target="spivpracia") співпраця
-                li 
-                    a(href="#delivery" data-target="delivery") оплата та доставка
-                li 
-                    a(href="#obmin" data-target="obmin") повернення та обмін
-                li 
-                    a(href="#contacts") контакти
-        .logo 
-            a(href="index.html").flex-between.items-center
-                picture 
-                    img(src="img/logo.svg", alt="" loading="lazy")
-                span
-                    | Власне
-                    span виробництво одягу
-        .contact_footer
-            h3 Контакти
-            p.d-flex.item-center
-                a(href="tel:+3800676881050").d-flex.item-center 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                        <path d="M11.5 10.6012C9.50415 12.7018 4.41318 7.65653 6.41662 5.54795C7.63985 4.26052 6.25803 2.78923 5.49317 1.70778C4.0577 -0.321854 0.906427 2.48034 1.00213 4.26287C1.30394 9.88404 7.38462 16.5455 13.2729 15.9645C15.115 15.7827 17.2315 12.456 15.1186 11.2402C14.0621 10.6322 12.6118 9.43099 11.5 10.6012Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    span 067 688 10 50
-            p
-                a(href="mailto:tanamakcik74@gmail.com").d-flex.item-center
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
-                        <path d="M16.363 3.28125L12.6117 7.20905C11.1839 8.54826 10.47 9.21787 9.62562 9.21787C8.78124 9.21787 8.06733 8.54826 6.63953 7.20905L2.88818 3.28125" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <rect x="0.5" y="0.5" width="18.25" height="13" rx="1.5" stroke="#121212"/>
-                    </svg>
-                    span tanamakcik74@gmail.com
-        .social_footer 
-            h3 ми у соцмережах
-            .flex.items-center 
-                a(href="#").d-flex.items-center.tktk
+.wrapper-contact.flex-between
+    .contact-page-flex
+        .social-contact.page-contact
+            h2 наші соцмережі:
+            p.d-flex.item-center.tktk
+                a(href="#").d-flex.items-center 
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                         <g clip-path="url(#clip0_148_5295)">
                             <path d="M24.5 12.5C24.5 19.1274 19.1274 24.5 12.5 24.5C5.87258 24.5 0.5 19.1274 0.5 12.5C0.5 5.87258 5.87258 0.5 12.5 0.5C19.1274 0.5 24.5 5.87258 24.5 12.5Z" fill="#121212" stroke="black"/>
@@ -54,7 +21,9 @@ footer.black_bg
                             </clipPath>
                         </defs>
                     </svg>
-                a(href="#").d-flex.items-center.fb
+                    span mbm_khm
+            p.d-flex.item-center.fb
+                a(href="#").d-flex.items-center 
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                         <g clip-path="url(#clip0_148_5309)">
                             <path d="M12.5 0C5.625 0 0 5.625 0 12.5C0 18.75 4.625 23.875 10.5 24.875V16.125H7.375V12.5H10.5V9.75C10.5 6.625 12.375 4.875 15.25 4.875C16.625 4.875 18 5.125 18 5.125V8.25H16.375C14.875 8.25 14.375 9.25 14.375 10.25V12.5H17.875L17.375 16.125H14.5V24.875C20.375 23.875 25 18.75 25 12.5C25 5.625 19.375 0 12.5 0Z" fill="#1677F0"/>
@@ -65,7 +34,9 @@ footer.black_bg
                             </clipPath>
                         </defs>
                     </svg>
-                a(href="").d-flex.items-center.inst
+                    span mbm_khm
+            p.d-flex.item-center.inst
+                a(href="").d-flex.items-center
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                         <g clip-path="url(#clip0_148_5313)">
                             <path d="M12.5 23.375C18.5751 23.375 23.5 18.4501 23.5 12.375C23.5 6.29987 18.5751 1.375 12.5 1.375C6.42487 1.375 1.5 6.29987 1.5 12.375C1.5 18.4501 6.42487 23.375 12.5 23.375Z" fill="white"/>
@@ -85,8 +56,35 @@ footer.black_bg
                             </clipPath>
                         </defs>
                     </svg>
+                    span mbm_khm
+        .contact.page-contact
+            h3 Наші контакти
+            p.d-flex.item-center
+                a(href="tel:+3800676881050").d-flex.item-center 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                        <path d="M11.5 10.6012C9.50415 12.7018 4.41318 7.65653 6.41662 5.54795C7.63985 4.26052 6.25803 2.78923 5.49317 1.70778C4.0577 -0.321854 0.906427 2.48034 1.00213 4.26287C1.30394 9.88404 7.38462 16.5455 13.2729 15.9645C15.115 15.7827 17.2315 12.456 15.1186 11.2402C14.0621 10.6322 12.6118 9.43099 11.5 10.6012Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    span 067 688 10 50
+            p
+                a(href="mailto:tanamakcik74@gmail.com").d-flex.item-center
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+                        <path d="M16.363 3.28125L12.6117 7.20905C11.1839 8.54826 10.47 9.21787 9.62562 9.21787C8.78124 9.21787 8.06733 8.54826 6.63953 7.20905L2.88818 3.28125" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="0.5" y="0.5" width="18.25" height="13" rx="1.5" stroke="#121212"/>
+                    </svg>
+                    span tanamakcik74@gmail.com
 
-            a.privacyPolice(href="#") Політика Конфіденційності
-            p &copy copyright by MBM 2025 
-
-        
+    .form-contactPage 
+        form(action="#") 
+            h2 зворотній звʼязок:
+            p Залишіть свої дані для звʼязку з нами.
+            p 
+                label(for="userName") Імʼя*
+                input#userPhone.inputMask(type="text" name="userName")
+            p 
+                label(for="userPhone") Телефон*
+                input#userPhone.inputMask(type="text" name="userPhone")
+            p
+                label(for="textarea") Повідомлення*
+                textarea#textarea(name="textarea")
+            .wrapper.tac_form_btn  
+                button(type="submit").submit-btn відправити

@@ -196,7 +196,6 @@ img
         opacity: 1
 
 .about_container
-    padding: 70rem 0
     h2
         +media(768)
             text-align: left
@@ -275,8 +274,7 @@ img
     background-color: transparent 
     padding: 20rem 0
 
-.reviews_container,
-.catalog
+.container
     padding: 70rem 0
 .catalog
     .col-4
@@ -301,6 +299,13 @@ img
     padding-top: 20px
     text-align: center
 
-
-
+.start_buisnes
+    text-align: center
+    p
+        padding-bottom: 27px
+    +media(1024)
+        max-width: 60%
+    .transparent_cta
+        padding: 35rem 0
 @import components/info
+@import components/footer
