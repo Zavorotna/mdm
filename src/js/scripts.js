@@ -132,5 +132,28 @@ document.addEventListener("DOMContentLoaded", function () {
     hideAllSections()
     deactivateAllButtons()
 
+    //spivpracia popup
+    const spivpraciaBtn = document.querySelectorAll(".spivpracia_btn"),
+        popupSpivpracia = document.querySelector(".spivpracia_popup"),
+        cancelSpevpr = document.querySelector(".cancel_spivpracia"),
+        darkBg = document.querySelector(".dark-bgc")
+
+
+        spivpraciaBtn.forEach(item => {
+            item.addEventListener("click", function(e) {
+                e.preventDefault()
+                popupSpivpracia.style.display = "block"
+                darkBg.style.display = "block"
+            })
+        })
+
+        function cancelPopup(e) {
+            e.preventDefault()
+            popupSpivpracia.style.display = "none"
+            darkBg.style.display = "none"
+        }
+
+        cancelSpevpr.addEventListener("click", cancelPopup)
+        darkBg.addEventListener("click", cancelPopup)
 
 })

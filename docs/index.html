@@ -8,10 +8,31 @@
   </head>
   <body> 
     <div class="dark-bgc"></div>
+    <div class="spivpracia_popup"> <a class="cancel_spivpracia" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+<path d="M1 15L14.7071 1M15 15L1.29291 1" stroke="#121212" stroke-width="1.5" stroke-linecap="round"/>
+</svg></a>
+      <h2>Введіть свої дані і ми з Вами зв'яжемося! </h2>
+      <form action="sendcontact.php" method="post"> 
+        <div class="name">
+          <label for="name"> </label>
+          <input id="name" type="text" name="userName" minlength="3" maxlength="30" placeholder="введіть ваше імʼя*" required="" oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐs]/g, '')">
+        </div>
+        <div class="phone">
+          <label for="phone"> </label>
+          <input class="phoneInput inputMask" type="tel" name="userPhone" placeholder="введіть ваш телефон*" required="" maxlength="13"><span class="error-tel"></span>
+        </div>
+        <input type="hidden" id="orderWebsiteURL2" name="orderWebsiteURL">
+        <div class="wrapper tac_form_btn">
+          <button class="submit-btn" type="submit">Відправити</button>
+        </div>
+      </form>
+    </div>
     <div class="cart_popup"><a class="cancel_cart" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M1 15L14.7071 1M15 15L1.29291 1" stroke="#121212" stroke-width="1.5" stroke-linecap="round"/>
 </svg></a>
-      <form action="sendorder.php" method="post">
+      <h2>Кошик</h2>
+      <p class="error_cart flex items-center"><svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#5f6368"><path d="m634-440-81-80h69l110-200H353l-80-80h525q23 0 35.5 19.5t.5 42.5L692-482q-11 20-28 31t-30 11ZM280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm540 52L566-280H304q-44 0-67-37.5t-3-78.5l42-86-72-162L28-820l56-56L876-84l-56 56ZM486-360l-80-80h-62l-40 80h182Zm136-160h-69 69Zm58 440q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80Z"/></svg><span>Кошик порожній</span></p>
+      <form class="order_container" action="sendorder.php" method="post">
         <div class="data">
           <div class="name">
             <label for="name"> </label>
@@ -19,13 +40,13 @@
           </div>
           <div class="phone">
             <label for="phone"> </label>
-            <input class="inputMask" id="phone" type="tel" name="userPhone" placeholder="введіть ваш телефон*" required="" maxlength="13">
+            <input class="phoneInput inputMask" type="tel" name="userPhone" placeholder="введіть ваш телефон*" required="" maxlength="13"><span class="error-tel"></span>
           </div>
           <input type="hidden" name="cartData" id="cartData">
           <input type="hidden" id="orderWebsiteURL" name="orderWebsiteURL">
         </div>
         <div class="order">
-          <p class="cart-head">ваше замовлення:</p><a class="addtocart white-head head" href="#catalog">додати товар<span class="gradient add-cta">+</span></a>
+          <p class="cart-head">ваше замовлення:</p>
           <div class="cart-container grid items-center">
             <p class="cart_img">
               <picture> <img src="" alt=""></picture>
@@ -46,9 +67,9 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="wrapper tac_form_btn">
-          <button class="submit-btn" type="submit">Оформити замовлення</button>
+          <div class="wrapper tac_form_btn">
+            <button class="submit-btn" type="submit">Оформити замовлення</button>
+          </div>
         </div>
       </form>
     </div>
@@ -88,7 +109,7 @@
         <div class="flex main_container">
           <h1>Стильний і комфортний одяг для усієї родини</h1>
           <p>Гурт та роздріб</p>
-          <div class="flex cta_main"><a class="cta catalog_cta" href="#">каталог</a><a class="cta black_cta" href="#">співпраця</a></div>
+          <div class="flex cta_main"><a class="cta catalog_cta" href="#">каталог</a><a class="cta black_cta spivpracia_btn" href="#">співпраця</a></div>
         </div>
         <div class="grid grid_main_container"> 
           <div class="slider-images-1"><img src="img/main-bg1.jpg" alt="" loading="lazy"><img src="img/main-bg2.jpg" alt="" loading="lazy"></div>
@@ -118,7 +139,7 @@
             <h2>МВМ — комфорт і стиль для кожного дня</h2>
             <p>Ми — український бренд із власним виробництвом, що спеціалізується на створенні дитячого, жіночого та чоловічого одягу. </p>
             <p>Наша мета — забезпечити кожного комфортним та стильним одягом.</p>
-            <div class="flex"><a class="cta catalog_cta" href="#">каталог</a><a class="cta black_cta" href="#">співпраця</a></div>
+            <div class="flex"><a class="cta catalog_cta" href="#">каталог</a><a class="cta black_cta spivpracia_btn" href="#">співпраця</a></div>
             <div class="grid col-4 about-pic">
               <picture> <img src="img/sec-3-1.jpg" alt="" loading="lazy"></picture>
               <picture> <img src="img/sec-3-2.jpg" alt="" loading="lazy"></picture>
@@ -128,7 +149,7 @@
           </div>
         </div>
       </section>
-      <section class="catalog wrapper container">
+      <section class="catalog wrapper container" id="catalog">
         <h2>каталог</h2>
         <div class="grid col-4 catalog_container"></div>
       </section>
@@ -271,7 +292,7 @@
         <div class="wrapper start_buisnes">
           <h2>розпочніть прибутковий бізнес з MBM!</h2>
           <p>Співпрацювати з нами по опту — це вигідно, зручно та надійно! Ми є виробником, тому гарантуємо високу якість флісових костюмів за найкращими цінами. Пропонуємо широкий асортимент моделей, швидку доставку по Україні та гнучкі умови для кожного партнера.</p>
-          <div class="grid col-3 items-center">
+          <div class="grid items-center col-3">
             <p class="transparent_cta">Товар у наявності</p>
             <p class="transparent_cta">Вигідні ціни</p>
             <p class="transparent_cta">Повернення та обмін товару</p>
@@ -280,11 +301,11 @@
       </section>
       <section class="wrapper container"> 
         <h2>контакти</h2>
-        <div class="wrapper-contact flex-between">
-          <div class="contact-page-flex">
+        <div class="wrapper-contact" id="contacts">
+          <div class="contact-page flex-between">
             <div class="social-contact page-contact">
               <h2>наші соцмережі:</h2>
-              <p class="d-flex item-center tktk"><a class="d-flex items-center" href="#">
+              <p class="flex item-center tktk"><a class="flex items-center" href="#">
                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <g clip-path="url(#clip0_148_5295)">
 <path d="M24.5 12.5C24.5 19.1274 19.1274 24.5 12.5 24.5C5.87258 24.5 0.5 19.1274 0.5 12.5C0.5 5.87258 5.87258 0.5 12.5 0.5C19.1274 0.5 24.5 5.87258 24.5 12.5Z" fill="#121212" stroke="black"/>
@@ -302,7 +323,7 @@
 </clipPath>
 </defs>
 </svg><span>mbm_khm</span></a></p>
-              <p class="d-flex item-center fb"><a class="d-flex items-center" href="#">
+              <p class="flex item-center fb"><a class="flex items-center" href="#">
                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <g clip-path="url(#clip0_148_5309)">
 <path d="M12.5 0C5.625 0 0 5.625 0 12.5C0 18.75 4.625 23.875 10.5 24.875V16.125H7.375V12.5H10.5V9.75C10.5 6.625 12.375 4.875 15.25 4.875C16.625 4.875 18 5.125 18 5.125V8.25H16.375C14.875 8.25 14.375 9.25 14.375 10.25V12.5H17.875L17.375 16.125H14.5V24.875C20.375 23.875 25 18.75 25 12.5C25 5.625 19.375 0 12.5 0Z" fill="#1677F0"/>
@@ -313,7 +334,7 @@
 </clipPath>
 </defs>
 </svg><span>mbm_khm</span></a></p>
-              <p class="d-flex item-center inst"><a class="d-flex items-center" href=""><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <p class="flex item-center inst"><a class="flex items-center" href=""><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <g clip-path="url(#clip0_148_5313)">
 <path d="M12.5 23.375C18.5751 23.375 23.5 18.4501 23.5 12.375C23.5 6.29987 18.5751 1.375 12.5 1.375C6.42487 1.375 1.5 6.29987 1.5 12.375C1.5 18.4501 6.42487 23.375 12.5 23.375Z" fill="white"/>
 <path d="M12.5 25C5.625 25 0 19.375 0 12.5C0 5.625 5.625 0 12.5 0C19.375 0 25 5.625 25 12.5C25 19.375 19.375 25 12.5 25ZM16.75 7.375C16.25 7.375 15.875 7.75 15.875 8.25C15.875 8.75 16.25 9.125 16.75 9.125C17.25 9.125 17.625 8.75 17.625 8.25C17.625 7.75 17.25 7.375 16.75 7.375ZM12.625 8.625C10.5 8.625 8.75 10.375 8.75 12.5C8.75 14.625 10.5 16.375 12.625 16.375C14.75 16.375 16.5 14.625 16.5 12.5C16.5 10.375 14.75 8.625 12.625 8.625ZM12.625 15C11.25 15 10.125 13.875 10.125 12.5C10.125 11.125 11.25 10 12.625 10C14 10 15.125 11.125 15.125 12.5C15.125 13.875 14 15 12.625 15ZM20.5 9.25C20.5 6.625 18.375 4.5 15.75 4.5H9.5C6.875 4.5 4.75 6.625 4.75 9.25V15.5C4.75 18.125 6.875 20.25 9.5 20.25H15.75C18.375 20.25 20.5 18.125 20.5 15.5V9.25ZM19 15.5C19 17.25 17.5 18.75 15.75 18.75H9.5C7.625 18.75 6.25 17.375 6.25 15.5V9.25C6.25 7.5 7.625 6 9.5 6H15.75C17.5 6 19 7.5 19 9.25V15.5Z" fill="url(#paint0_linear_148_5313)"/>
@@ -334,32 +355,33 @@
 </svg><span>mbm_khm</span></a></p>
             </div>
             <div class="contact page-contact">
-              <h3>Наші контакти</h3>
-              <p class="d-flex item-center"><a class="d-flex item-center" href="tel:+3800676881050">
+              <h2>Наші контакти</h2>
+              <p class="flex item-center"><a class="flex item-center" href="tel:+3800676881050">
                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
 <path d="M11.5 10.6012C9.50415 12.7018 4.41318 7.65653 6.41662 5.54795C7.63985 4.26052 6.25803 2.78923 5.49317 1.70778C4.0577 -0.321854 0.906427 2.48034 1.00213 4.26287C1.30394 9.88404 7.38462 16.5455 13.2729 15.9645C15.115 15.7827 17.2315 12.456 15.1186 11.2402C14.0621 10.6322 12.6118 9.43099 11.5 10.6012Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg><span>067 688 10 50</span></a></p>
-              <p><a class="d-flex item-center" href="mailto:tanamakcik74@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+              <p><a class="flex item-center" href="mailto:tanamakcik74@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
 <path d="M16.363 3.28125L12.6117 7.20905C11.1839 8.54826 10.47 9.21787 9.62562 9.21787C8.78124 9.21787 8.06733 8.54826 6.63953 7.20905L2.88818 3.28125" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="0.5" y="0.5" width="18.25" height="13" rx="1.5" stroke="#121212"/>
 </svg><span>tanamakcik74@gmail.com</span></a></p>
             </div>
           </div>
           <div class="form-contactPage"> 
-            <form action="#"> 
+            <form action="senddata.php" method="post"> 
               <h2>зворотній звʼязок:</h2>
               <p>Залишіть свої дані для звʼязку з нами.</p>
               <p> 
-                <label for="userName">Імʼя*</label>
-                <input class="inputMask" id="userPhone" type="text" name="userName">
+                <label for="name">Імʼя*</label>
+                <input id="name" type="text" name="userName" minlength="3" maxlength="30" required="" oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐs]/g, '')"><span class="error-name"></span>
               </p>
               <p> 
                 <label for="userPhone">Телефон*</label>
-                <input class="inputMask" id="userPhone" type="text" name="userPhone">
+                <input class="phoneInput inputMask" type="tel" name="userPhone" required="" maxlength="13"><span class="error-tel"></span>
               </p>
               <p>
                 <label for="textarea">Повідомлення*</label>
                 <textarea id="textarea" name="textarea"></textarea>
+                <input type="hidden" id="orderWebsiteURL1" name="orderWebsiteURL">
               </p>
               <div class="wrapper tac_form_btn"> 
                 <button class="submit-btn" type="submit">відправити</button>
@@ -370,7 +392,7 @@
       </section>
     </main>
     <footer class="black_bg"> 
-      <div class="wrapper grid items-center footer">
+      <div class="wrapper grid footer">
         <nav class="nav_footer"> 
           <h3>клієнтам</h3>
           <ul class="menu menu_footer">
@@ -380,17 +402,21 @@
             <li> <a href="#contacts">контакти</a></li>
           </ul>
         </nav>
-        <div class="logo"> <a class="flex-between items-center" href="index.html">
-            <picture> <img src="img/logo.svg" alt="" loading="lazy"></picture><span>Власне<span>виробництво одягу</span></span></a></div>
+        <div class="logo"> <a class="flex-between items-center" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110" fill="none">
+<path d="M109.5 55C109.5 85.0995 85.0995 109.5 55 109.5C24.9005 109.5 0.5 85.0995 0.5 55C0.5 24.9005 24.9005 0.5 55 0.5C85.0995 0.5 109.5 24.9005 109.5 55Z" fill="#121212" stroke="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M32.1677 46.9267C32.1677 47.3052 36.7089 51.5942 36.9612 51.8465C37.7181 52.6034 41.5025 56.3878 41.881 56.7662L46.6745 51.9726V57.9015C46.6745 58.4061 47.053 58.5323 47.5576 59.0368L51.5943 62.9474V62.1905H56.7663C58.0278 62.1905 58.0278 63.0735 58.0278 63.9566C58.0278 64.7134 57.6493 65.218 56.7663 65.218H51.5943C51.5943 64.5873 51.2158 64.4612 50.4589 63.8305C49.7021 63.0736 47.053 60.4245 46.6745 60.046V69.3809H58.9108C60.1722 69.3809 61.8122 68.3717 62.4429 67.6149C63.9567 65.5965 64.0828 62.6951 62.8213 60.5506C62.569 60.1722 62.4429 60.046 62.1906 59.7937C62.6952 59.0369 63.1998 59.0368 63.5782 57.1446C63.9566 54.874 63.4521 52.7295 61.5599 51.3419C60.9291 50.8373 59.6677 50.2066 58.5323 50.2066H51.5943V41.124C50.0805 41.124 50.5851 41.124 48.4406 43.2685C47.6837 44.0254 47.053 44.7823 46.2961 45.5392L42.0071 49.9543C41.5025 49.702 36.2044 44.2777 35.3213 43.3947C34.9429 43.0162 34.5644 42.6378 34.186 42.2593C33.0507 41.124 33.5553 41.2501 32.0415 41.2501V46.9267H32.1677ZM51.5943 55.8832V54.4956H57.2709C58.4062 54.4956 58.5323 57.1446 56.8924 57.1446H53.2342C52.0989 57.1446 51.5943 56.8924 51.5943 55.8832Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M58.658 46.9268C58.658 47.3052 63.1992 51.5943 63.4515 51.8466C64.2084 52.6034 67.9928 56.3878 68.3713 56.7663L73.1648 51.9727V59.2892C73.1648 59.6677 73.0387 60.0461 73.4171 60.0461H77.9584V40.8718C76.5708 40.8718 76.8231 40.6195 75.3093 42.3856C75.057 42.6378 75.057 42.764 74.8047 43.0163L71.6511 46.17C71.2726 46.5484 71.0203 46.9268 70.6419 47.3053C70.1373 47.8099 69.002 49.0713 68.4974 49.4497L64.0823 45.0346C63.4515 44.53 62.5685 43.5209 61.9378 42.8901C61.5593 42.5117 61.1809 42.1333 60.8025 41.7548C59.6671 40.6195 60.1717 40.7456 58.658 40.7456V46.9268Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M32.1672 60.1721H37.087V53.9909C37.087 53.6125 32.4195 49.0712 32.1672 48.9451V60.1721Z" fill="white"/>
+</svg><span>Власне<span>виробництво одягу</span></span></a></div>
         <div class="contact_footer">
           <h3>Контакти</h3>
-          <p class="d-flex item-center"><a class="d-flex item-center" href="tel:+3800676881050">
+          <p><a class="flex items-center" href="tel:+3800676881050">
                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-<path d="M11.5 10.6012C9.50415 12.7018 4.41318 7.65653 6.41662 5.54795C7.63985 4.26052 6.25803 2.78923 5.49317 1.70778C4.0577 -0.321854 0.906427 2.48034 1.00213 4.26287C1.30394 9.88404 7.38462 16.5455 13.2729 15.9645C15.115 15.7827 17.2315 12.456 15.1186 11.2402C14.0621 10.6322 12.6118 9.43099 11.5 10.6012Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.5 10.6012C9.50415 12.7018 4.41318 7.65653 6.41662 5.54795C7.63985 4.26052 6.25803 2.78923 5.49317 1.70778C4.0577 -0.321854 0.906427 2.48034 1.00213 4.26287C1.30394 9.88404 7.38462 16.5455 13.2729 15.9645C15.115 15.7827 17.2315 12.456 15.1186 11.2402C14.0621 10.6322 12.6118 9.43099 11.5 10.6012Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg><span>067 688 10 50</span></a></p>
-          <p><a class="d-flex item-center" href="mailto:tanamakcik74@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
-<path d="M16.363 3.28125L12.6117 7.20905C11.1839 8.54826 10.47 9.21787 9.62562 9.21787C8.78124 9.21787 8.06733 8.54826 6.63953 7.20905L2.88818 3.28125" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="0.5" y="0.5" width="18.25" height="13" rx="1.5" stroke="#121212"/>
+          <p><a class="flex items-center" href="mailto:tanamakcik74@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+<path d="M16.363 2.28101L12.6117 6.2088C11.1839 7.54802 10.47 8.21763 9.62562 8.21763C8.78124 8.21763 8.06733 7.54802 6.63953 6.20881L2.88818 2.28101" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="0.75" y="0.75" width="17.75" height="12.5" rx="1.25" stroke="white" stroke-width="1.5"/>
 </svg><span>tanamakcik74@gmail.com</span></a></p>
         </div>
         <div class="social_footer"> 

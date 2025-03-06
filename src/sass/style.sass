@@ -39,11 +39,23 @@ textarea
     width: 100%
     outline: none
 
+textarea
+    min-height: 100px
+    max-height: 150px
+    resize: vertical
+
+select
+    width: 20%
+    border: none
+    border-bottom: 1px solid $black
+    outline: none
+
 input[type='text'],
-input[type='tel']
+input[type='tel'],
+textarea
     padding: 17rem 10rem
     border-radius: 3px
-    border: 1px solid #CABABA
+    border: 1px solid $black
 
 .wrapper
     width: 95%
@@ -91,9 +103,14 @@ img
     font-weight: 500
     line-height: normal
     text-transform: uppercase
+    transition: all .5 ease
+    &:hover
+        transform: scale(1.05)
     +media(768)
         width: 45%
-
+        
+.order_container
+    display: none
 
 @import components/header
 @import components/card
@@ -219,7 +236,8 @@ img
         grid-template-columns: 1fr 2fr
 
 .col-3
-    grid-template-columns: repeat(3, 1fr)
+    +media(538)
+        grid-template-columns: repeat(3, 1fr)
 
 .col_3_adv
     +media(768)
@@ -276,6 +294,7 @@ img
 
 .container
     padding: 70rem 0
+
 .catalog
     .col-4
         grid-template-columns: repeat(2, 1fr)
@@ -294,6 +313,11 @@ img
     border-radius: 3px
     border: 1px solid $black
     background: $black
+    transition: all .5s ease
+    cursor: pointer
+    &:hover
+        color: $black
+        background-color: $white
 
 .tac_form_btn
     padding-top: 20px
@@ -307,5 +331,16 @@ img
         max-width: 60%
     .transparent_cta
         padding: 35rem 0
+    
+
+.error-name,
+.error-tel
+    position: absolute
+    bottom: -15px
+    left: 0
+    font-size: 12px
+    color: #EB4242
+
 @import components/info
+@import components/contacts
 @import components/footer

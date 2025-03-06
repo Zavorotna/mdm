@@ -7,25 +7,45 @@ html(lang="en")
         title МВМ — Стильний і комфортний одяг для усієї родини
     body 
         .dark-bgc
+        .spivpracia_popup 
+            a.cancel_spivpracia(href="#")
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M1 15L14.7071 1M15 15L1.29291 1" stroke="#121212" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            h2 Введіть свої дані і ми з Вами зв'яжемося! 
+            form(action="sendcontact.php" method="post") 
+                .name
+                        label(for='name')  
+                        input#name(type='text' name='userName' minlength='3' maxlength='30' placeholder='введіть ваше імʼя*' required='' oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐs]/g, '')")
+                .phone
+                    label(for='phone')  
+                    input.phoneInput.inputMask(type='tel' name='userPhone' placeholder='введіть ваш телефон*' required='' maxlength='13')
+                    span.error-tel
+                input(type="hidden" id="orderWebsiteURL2" name="orderWebsiteURL")
+                .wrapper.tac_form_btn
+                    button(type="submit").submit-btn Відправити
         .cart_popup
             a.cancel_cart(href="#")
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M1 15L14.7071 1M15 15L1.29291 1" stroke="#121212" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
-            form(action="sendorder.php" method="post")
+            h2 Кошик
+            p.error_cart.flex.items-center
+                <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#5f6368"><path d="m634-440-81-80h69l110-200H353l-80-80h525q23 0 35.5 19.5t.5 42.5L692-482q-11 20-28 31t-30 11ZM280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm540 52L566-280H304q-44 0-67-37.5t-3-78.5l42-86-72-162L28-820l56-56L876-84l-56 56ZM486-360l-80-80h-62l-40 80h182Zm136-160h-69 69Zm58 440q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80Z"/></svg>
+                span Кошик порожній
+            form.order_container(action="sendorder.php" method="post")
                 .data
                     .name
                         label(for='name')  
                         input#name(type='text' name='userName' minlength='3' maxlength='30' placeholder='введіть ваше імʼя*' required='' oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐs]/g, '')")
                     .phone
                         label(for='phone')  
-                        input#phone.inputMask(type='tel' name='userPhone' placeholder='введіть ваш телефон*' required='' maxlength='13')
+                        input.phoneInput.inputMask(type='tel' name='userPhone' placeholder='введіть ваш телефон*' required='' maxlength='13')
+                        span.error-tel
                     input(type="hidden" name="cartData" id="cartData")
                     input(type="hidden" id="orderWebsiteURL" name="orderWebsiteURL")
                 .order
                     p.cart-head ваше замовлення:
-                    a.addtocart.white-head.head(href='#catalog') додати товар
-                        span.gradient.add-cta +
                     .cart-container.grid.items-center
                         p.cart_img
                             picture 
@@ -46,8 +66,8 @@ html(lang="en")
                                         <path d="M10.7607 17.1875H14.2295" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M9.896 13.0208H15.1043" stroke="#CABABA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                .wrapper.tac_form_btn
-                    button(type="submit").submit-btn Оформити замовлення
+                    .wrapper.tac_form_btn
+                        button(type="submit").submit-btn Оформити замовлення
         include components/header 
         main 
             section.black_bg.main_section
@@ -56,7 +76,7 @@ html(lang="en")
                     p Гурт та роздріб
                     .flex.cta_main
                         a.cta.catalog_cta(href="#") каталог
-                        a.cta.black_cta(href="#") співпраця
+                        a.cta.black_cta(href="#").spivpracia_btn співпраця
                 .grid.grid_main_container 
                     .slider-images-1
                         img(src="img/main-bg1.jpg", alt="" loading="lazy")
@@ -83,7 +103,7 @@ html(lang="en")
                         p Наша мета — забезпечити кожного комфортним та стильним одягом.
                         .flex
                             a.cta.catalog_cta(href="#") каталог
-                            a.cta.black_cta(href="#") співпраця
+                            a.cta.black_cta(href="#").spivpracia_btn співпраця
                         .grid.col-4.about-pic
                             picture 
                                 img(src="img/sec-3-1.jpg", alt="" loading="lazy")
@@ -93,7 +113,7 @@ html(lang="en")
                                 img(src="img/sec-3-3.jpg", alt="" loading="lazy")
                             picture 
                                 img(src="img/sec-3-4.jpg", alt="" loading="lazy")
-            section.catalog.wrapper.container
+            section.catalog.wrapper.container#catalog
                 h2 каталог
                 .grid.col-4.catalog_container
 
@@ -127,7 +147,7 @@ html(lang="en")
                 .wrapper.start_buisnes
                     h2 розпочніть прибутковий бізнес з MBM!
                     p Співпрацювати з нами по опту — це вигідно, зручно та надійно! Ми є виробником, тому гарантуємо високу якість флісових костюмів за найкращими цінами. Пропонуємо широкий асортимент моделей, швидку доставку по Україні та гнучкі умови для кожного партнера.
-                    .grid.col-3.items-center
+                    .grid.items-center.col-3
                         p.transparent_cta Товар у наявності
                         p.transparent_cta Вигідні ціни
                         p.transparent_cta Повернення та обмін товару

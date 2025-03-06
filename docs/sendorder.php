@@ -33,6 +33,7 @@ if ($_POST) {
     
             $urlQuery = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" .
                 "<b>Заявка з сайту: $websiteURL</b>%0A%0A" .
+                "***<b>Форма замовлення</b>***%0A" . "%0A" .
                 "Ім'я замовника: <b>$userName</b>%0A" . "%0A" .
                 "Телефон: <b>$userPhone</b>%0A" . "%0A" .
                 "========== Дані замовлення ========== " . "%0A%0A" .

@@ -94,7 +94,8 @@ fetch('products.json')
 
                 localStorage.setItem("cart", JSON.stringify(cart))
                 // console.log(cart)
-                alert("Товар додано в кошик!")
+                // alert("Товар додано в кошик!")
+                openCart()
             })
             card.appendChild(cardContainer)
             cardContainer.appendChild(picture)
@@ -113,27 +114,24 @@ fetch('products.json')
     .catch(error => console.error("Помилка завантаження JSON:", error))
 
 //cart
-const cartBtn = document.querySelector(".cart"),
-    cartPopup = document.querySelector(".cart_popup"),
-    cancelCart = document.querySelector(".cancel_cart"),
+const cartPopup = document.querySelector(".cart_popup"),
     darkBg = document.querySelector(".dark-bgc"),
-    addCta = document.querySelector(".addtocart"),
-    deleteCta = document.querySelector(".delete_cta"),
-    cartContainer = document.querySelector(".cart-container")
-
-cartBtn.addEventListener("click", function (e) {
-    e.preventDefault()
+    cartContainer = document.querySelector(".order_container"),
+    errorCart = document.querySelector(".error_cart")
+document.querySelector("#orderWebsiteURL").value = window.location
+document.querySelector("#orderWebsiteURL1").value = window.location
+document.querySelector("#orderWebsiteURL2").value = window.location
+function openCart() {
     cartPopup.style.display = "block"
-    cartContainer.style.display = "grid"
     darkBg.style.display = "block"
-
+    
     const cartProduct = JSON.parse(localStorage.getItem("cart"))
-    console.log(cartProduct);
+    // console.log(cartProduct);
     document.querySelector("#cartData").value = JSON.stringify(cartProduct)
-    document.querySelector("#orderWebsiteURL").value = window.location
-
+    
     if (Array.isArray(cartProduct) && cartProduct.length > 0) {
-        addCta.style.display = "none"
+        cartContainer.style.display = "grid"
+        errorCart.style.display = "none"
 
         const firstProduct = cartProduct[0],
             imgCart = cartPopup.querySelector(".cart_img img"),
@@ -152,8 +150,17 @@ cartBtn.addEventListener("click", function (e) {
         sizeCart.innerText = firstProduct.size
         priceCart.innerText = firstProduct.price
     } else {
-        addCta.style.display = "none"
+        errorCart.style.display = "flex"
     }
+}
+const cartBtn = document.querySelector(".cart"),
+    deleteCta = document.querySelector(".delete_cta"),
+    cancelCart = document.querySelector(".cancel_cart")
+
+cartBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    openCart()
+    
 })
 
 cancelCart.addEventListener("click", function (e) {
@@ -171,7 +178,7 @@ darkBg.addEventListener("click", function (e) {
 deleteCta.addEventListener("click", function (e) {
     e.preventDefault()
     localStorage.removeItem("cart")
-    addCta.style.display = "block"
+    errorCart.style.display = "flex"
     cartContainer.style.display = "none"
 })
 
@@ -181,54 +188,80 @@ const inputField = document.querySelectorAll('name'),
     maxLength = 30,
     minLength = 3
 
-const phoneInput = document.querySelector('#phone')
+const phoneInput = document.querySelectorAll('.phoneInput'),
+    errorName = document.querySelectorAll('.error-name'),
+    errorTel = document.querySelectorAll('.error-tel')
+phoneInput.forEach(item => {
+    item.addEventListener('input', function () {
+        let phoneNumber = item.value.trim()
+        const mask = "+380"
+    
+        if (!phoneNumber.startsWith(mask)) {
+            phoneNumber = mask + phoneNumber
+        }
+    
+        let cleanedValue = phoneNumber.replace(/[^\d+]/g, "")
+    
+        if (cleanedValue.length > 13) {
+            cleanedValue = cleanedValue.slice(0, 13)
+        }
+    
+        const validInput = isValidPhoneNumber(cleanedValue)
+    
+        if (validInput && cleanedValue.length === 13) {
+            item.style.borderColor = 'green'
+            item.style.color = '#121212'
 
-phoneInput.addEventListener('input', function () {
-    let phoneNumber = phoneInput.value.trim()
-    const mask = "+380"
-
-    if (!phoneNumber.startsWith(mask)) {
-        phoneNumber = mask + phoneNumber
-    }
-
-    let cleanedValue = phoneNumber.replace(/[^\d+]/g, "")
-
-    if (cleanedValue.length > 13) {
-        cleanedValue = cleanedValue.slice(0, 13)
-    }
-
-    const validInput = isValidPhoneNumber(cleanedValue)
-
-    if (validInput && cleanedValue.length === 13) {
-        phoneInput.style.borderColor = 'green'
-    } else {
-        phoneInput.style.borderColor = 'red'
-        showToast("Введіть вірний номер телефону")
-    }
+            errorTel.forEach(item => { 
+                item.innerText = ""
+            })
+        } else {
+            item.style.borderColor = '#EB4242'
+            item.style.color = '#EB4242'
+            errorTel.forEach(item => { 
+                item.innerText = "Введіть коректний номер телефону"
+            })
+        }
+    })
 })
 
-const callMeForm = document.querySelector("form[action='sendorder.php']")
-    callMeForm.addEventListener("submit", (event) => {
-        const phoneInput = item.querySelector("input[name='userPhone']"),
-            phoneNumber = phoneInput.value.trim()
-        if (!phoneNumber || !isValidPhoneNumber(phoneNumber) || phoneNumber.length < 13) {
-            // showToast("Введіть коректний номер телефону", "info", 5000)
-            event.preventDefault()
-            return
-        }
-        let userInput
-        inputField.forEach(inputFieldItem => {
-            userInput = inputFieldItem.value.trim()
-            if (userInput.length < minLength || userInput.length > maxLength) {
-                event.preventDefault()
-                if (userInput.length < minLength) {
-                    // showToast('Мінімальна кількість символів для імені: 3')
-                } else {
-                    // showToast('Максимальна кількість символів для імені: 30')
-                }
-            }
+function validateForm(form) {
+    const phoneInput = form.querySelector("input[name='userPhone']"),
+        phoneNumber = phoneInput.value.trim()
+
+    if (!phoneNumber || !isValidPhoneNumber(phoneNumber) || phoneNumber.length < 13) {
+        errorTel.forEach(item => { 
+            item.innerText =  "Введіть коректний номер телефону"
         })
+        return false
+    }
+    
+    const inputFields = form.querySelectorAll("input[name='userName']")
+    for (const inputField of inputFields) {
+        const userInput = inputField.value.trim()
+        if (userInput.length < 3) {
+            errorName.forEach(item => { 
+                item.innerText =  'Мінімальна кількість символів для імені: 3'
+            })
+            return false
+        }
+        if (userInput.length > 30) {
+            errorName.forEach(item => { 
+                item.innerText =  'Максимальна кількість символів для імені: 30'
+            })
+            return false
+        }
+    }
+    return true
+}
+
+document.querySelectorAll("form[action='sendorder.php'], form[action='senddata.php'], form[action='sendcontact.php']").forEach(form => {
+    form.addEventListener("submit", (e) => {
+        if (!validateForm(form)) {
+            e.preventDefault()
+        }
     })
+})
 
 
 function isValidPhoneNumber(phoneNumber) {
