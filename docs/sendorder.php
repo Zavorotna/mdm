@@ -20,8 +20,10 @@ if ($_POST) {
                 $userName = "ERROR IN MESSAGE";
                 $websiteURL = "ERROR IN MESSAGE";
             }
-            $token = "6502486274:AAFqSGBvtvutHB8be-wTlsK3ETbssmLSEWo"; // api телеграм бота
-            $chat_id = "1066741091";
+            $token = "7798336221:AAGJeMUYFzLFrJjKtX9y6ETnehWcg1qQr20"; // api телеграм бота
+            $chat_id = "-4725527914";
+            // $token = "6502486274:AAFqSGBvtvutHB8be-wTlsK3ETbssmLSEWo"; // api телеграм бота
+            // $chat_id = "1066741091";
     
             $userPhone = urlencode("$userPhone");
             $userName = urlencode("$userName");
