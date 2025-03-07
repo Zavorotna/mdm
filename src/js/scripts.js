@@ -62,7 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const dark = document.querySelector(".dark-bgc"),
             burger = document.querySelector(".burger"),
             menu = document.querySelector(".nav"),
-            cancel = document.querySelector(".cancel")
+            cancel = document.querySelector(".cancel"),
+            listItem = menu.querySelectorAll("a")
 
         burger.addEventListener("click", function () {
             menu.style.left = "0";
@@ -73,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
             menu.style.left = "-100%";
             dark.style.display = "none"
         }
+        listItem.forEach(item => {
+            item.addEventListener("click", cancelBurger)
+        })
         cancel.addEventListener("click", cancelBurger)
         dark.addEventListener("click", cancelBurger)
     }
