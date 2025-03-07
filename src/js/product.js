@@ -147,7 +147,7 @@ function openCart() {
         titleCart.innerText = firstProduct.head
         colorText.innerText = firstProduct.colorName
         colorCircle.style.backgroundColor = `${firstProduct.color}`
-        sizeCart.innerText = firstProduct.size
+        sizeCart.innerText = `Розмір: ${firstProduct.size}`
         priceCart.innerText = firstProduct.price
     } else {
         errorCart.style.display = "flex"
