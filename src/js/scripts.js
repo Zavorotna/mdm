@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //btn for block info
     const buttons = document.querySelectorAll('.nav a '),
-        sections = document.querySelectorAll('#spivpracia, #delivery, #obmin')
+        sections = document.querySelectorAll('.description-more')
     let activeSection = null
 
     function hideAllSections() {
