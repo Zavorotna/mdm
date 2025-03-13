@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
                     // console.log(currentOffset);
-                    if (Math.abs(currentOffset) >= itemImgWidth + 30) {
+                    if (Math.abs(currentOffset) >= itemImgWidth + 35) {
                         currentOffset = 0;
                         updateCarouselImg()
                     }
