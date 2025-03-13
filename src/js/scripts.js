@@ -44,22 +44,31 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
     //fade out for main container
-    if (document.querySelector('.slider-images-1')) {
+    if (document.querySelector('.slider-images-1') && document.querySelector('.slider-images-2')) {
         const images1 = document.querySelectorAll('.slider-images-1 img'),
             images2 = document.querySelectorAll('.slider-images-2 img')
-        let currentImgIndex = 0;
-
-        images1[0].classList.add('active')
-        images2[0].classList.add('active')
-
+    
+        let currentImgIndex1 = 0,
+            currentImgIndex2 = 0
+    
+        if (images1.length > 0) images1[0].classList.add('active')
+        if (images2.length > 0) images2[0].classList.add('active')
+    
         setInterval(() => {
-            images1[currentImgIndex].classList.remove('active')
-            images2[currentImgIndex].classList.remove('active')
-            currentImgIndex = (currentImgIndex + 1) % images1.length
-            images1[currentImgIndex].classList.add('active')
-            images2[currentImgIndex].classList.add('active')
+            if (images1.length > 0) {
+                images1[currentImgIndex1].classList.remove('active')
+                currentImgIndex1 = (currentImgIndex1 + 1) % images1.length
+                images1[currentImgIndex1].classList.add('active')
+            }
+    
+            if (images2.length > 0) {
+                images2[currentImgIndex2].classList.remove('active')
+                currentImgIndex2 = (currentImgIndex2 + 1) % images2.length
+                images2[currentImgIndex2].classList.add('active')
+            }
         }, 3000)
     }
+    
 
     //burger
     if (document.querySelector(".burger")) {
