@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             itemImgWidth = items[0].offsetWidth,
             isAnimatingImg = false
         
-        console.log(itemImgWidth);
+        // console.log(itemImgWidth);
         function updateCarouselImg() {
             while (carousel.firstChild) {
                 carousel.removeChild(carousel.firstChild)
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
-                    console.log(currentOffset);
+                    // console.log(currentOffset);
                     if (Math.abs(currentOffset) >= itemImgWidth) {
                         currentOffset = 0;
                         updateCarouselImg()
@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 20)
         }
         startAutoScroll()
+        window.addEventListener('resize', () => {
+            updateCarouselImg();
+        })
     }
     //fade out for main container
     if (document.querySelector('.slider-images-1')) {
