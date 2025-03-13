@@ -17,6 +17,7 @@ fetch('products.json')
             picture.appendChild(img)
             img.src = product.img
             img.alt = product.head
+            img.setAttribute("loading", "lazy")
             title.textContent = product.head
             price.textContent = product.price
 
