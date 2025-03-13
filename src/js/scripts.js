@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let items = [...document.querySelectorAll(".content-slider h3")],
             itemImgWidth = items[0].offsetWidth,
             isAnimatingImg = false
-
+        
+        console.log(itemImgWidth);
         function updateCarouselImg() {
             while (carousel.firstChild) {
                 carousel.removeChild(carousel.firstChild)
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
-
+                    console.log(currentOffset);
                     if (Math.abs(currentOffset) >= itemImgWidth) {
                         currentOffset = 0;
                         updateCarouselImg()
