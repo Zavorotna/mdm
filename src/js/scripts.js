@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
                     // console.log(currentOffset);
-                    if (Math.abs(currentOffset) >= itemImgWidth + 35) {
+                    if (Math.abs(currentOffset) >= itemImgWidth + 37) {
                         currentOffset = 0;
                         updateCarouselImg()
                     }
@@ -90,7 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
         listItem.forEach(item => {
             item.addEventListener("click", cancelBurger)
         })
-        cancel.addEventListener("click", cancelBurger)
+        cancel.addEventListener("click", function(e) {
+            e.preventDefault()
+            cancelBurger()
+        })
         dark.addEventListener("click", cancelBurger)
     }
 
@@ -173,4 +176,15 @@ document.addEventListener("DOMContentLoaded", function () {
         cancelSpevpr.addEventListener("click", cancelPopup)
         darkBg.addEventListener("click", cancelPopup)
 
+    //autoload video after click on document
+    if(document.querySelector('video') && window.innerWidth < 1024) {
+        const video = document.querySelectorAll('video');
+        function playVideo() {
+            video.forEach(item => {
+                item.play();
+            })
+            document.removeEventListener('click', playVideo);
+        }
+        document.addEventListener('click', playVideo);
+    }
 })

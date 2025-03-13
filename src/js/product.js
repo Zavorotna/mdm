@@ -16,7 +16,7 @@ fetch('products.json')
             price.classList.add("price")
             picture.appendChild(img)
             img.src = product.img
-            img.alt = product.alt
+            img.alt = product.head
             title.textContent = product.head
             price.textContent = product.price
 
@@ -28,40 +28,50 @@ fetch('products.json')
             btnColorContainer.classList.add("flex-between")
             btnColorContainer.classList.add("items-center")
 
-            Object.entries(product.color).forEach(([color, name], index) => {
-                // console.log(color, name, index);
-                const label = document.createElement("label"),
-                    input = document.createElement("input"),
-                    span = document.createElement("span")
-
-                input.type = "radio";
-                input.name = `color-${product.id}`;
-                input.value = color;
-                input.setAttribute("data-color-name", name);
-                if (index === 0) input.checked = true;
-
-                input.style.backgroundColor = color;
-                label.appendChild(input)
-                if (color == "#fff") {
-                    label.appendChild(span)
-                }
-                colorContainer.appendChild(label);
-            });
-
+            if (product.color && typeof product.color === "object" && Object.keys(product.color).length > 0) {
+                Object.entries(product.color).forEach(([color, name], index) => {
+                    const label = document.createElement("label"),
+                        input = document.createElement("input"),
+                        span = document.createElement("span");
+            
+                    input.type = "radio";
+                    input.name = `color-${product.id}`;
+                    input.value = color;
+                    input.setAttribute("data-color-name", name);
+                    if (index === 0) input.checked = true;
+            
+                    input.style.backgroundColor = color;
+                    label.appendChild(input);
+                    if (color === "#fff") {
+                        label.appendChild(span);
+                    }
+                    colorContainer.appendChild(label);
+                });
+            }
+            
+            // console.log(product.size);
+            card.appendChild(cardContainer)
+            cardContainer.appendChild(picture)
+            cardContainer.appendChild(title)
+            cardContainer.appendChild(price)
             //size
-            const sizeContainer = document.createElement("div"),
-                sizeLabel = document.createElement("label"),
-                sizeSelect = document.createElement("select")
-
+            const sizeContainer = document.createElement("div")
             sizeContainer.classList.add("size")
-            product.size.forEach(size => {
-                const option = document.createElement("option")
-                option.value = size
-                option.textContent = size
-                sizeSelect.appendChild(option)
-            })
-            sizeContainer.appendChild(sizeLabel)
-            sizeContainer.appendChild(sizeSelect)
+            if(Array.isArray(product.size) && product.size.length > 0) {
+                const sizeLabel = document.createElement("label"),
+                    sizeSelect = document.createElement("select")
+    
+                product.size.forEach(size => {
+                    const option = document.createElement("option")
+                    option.value = size
+                    option.textContent = size
+                    sizeSelect.appendChild(option)
+                })
+                sizeContainer.appendChild(sizeLabel)
+                sizeContainer.appendChild(sizeSelect)
+                
+            }
+            cardContainer.appendChild(sizeContainer)
 
             // create local storage cart
             const addToCartBtn = document.createElement("button"),
@@ -76,36 +86,36 @@ fetch('products.json')
             addToCartBtn.classList.add("flex")
 
             addToCartBtn.addEventListener("click", () => {
-                const selectedColor = card.querySelector(`input[name='color-${product.id}']:checked`).value,
-                    selectedSize = sizeSelect.value,
-                    selectedColorAtr = card.querySelector(`input[name='color-${product.id}']:checked`).getAttribute("data-color-name")
-                cartItem = {
+                const selectedColorInput = card.querySelector(`input[name='color-${product.id}']:checked`),
+                    selectedSizeSelect = card.querySelector("select")
+            
+                let selectedColor = selectedColorInput ? selectedColorInput.value : null,
+                    selectedColorAtr = selectedColorInput ? selectedColorInput.getAttribute("data-color-name") : null,
+                    selectedSize = selectedSizeSelect ? selectedSizeSelect.value : null
+            
+                const cartItem = {
                     id: product.id,
                     img: product.img,
-                    alt: product.alt,
+                    alt: product.head,
                     head: product.head,
                     price: product.price,
-                    color: selectedColor,
-                    colorName: selectedColorAtr,
-                    size: selectedSize
+                    color: selectedColor, 
+                    colorName: selectedColorAtr, 
+                    size: selectedSize 
                 }
-
-                let cart = [cartItem]
-
-                localStorage.setItem("cart", JSON.stringify(cart))
-                // console.log(cart)
-                // alert("Товар додано в кошик!")
-                openCart()
-            })
-            card.appendChild(cardContainer)
-            cardContainer.appendChild(picture)
-            cardContainer.appendChild(title)
-            cardContainer.appendChild(price)
-            cardContainer.appendChild(sizeContainer)
+            
+                localStorage.setItem("cart", JSON.stringify([cartItem]))
+            
+                // console.log(cartItem);
+                // alert("Товар додано в кошик!");
+                openCart();
+            });
+            
+            
             cardContainer.appendChild(btnColorContainer)
             btnColorContainer.appendChild(colorContainer)
             btnColorContainer.appendChild(addToCartBtn)
-
+            
             container.appendChild(card)
         }
 
@@ -126,7 +136,7 @@ function openCart() {
     darkBg.style.display = "block"
     
     const cartProduct = JSON.parse(localStorage.getItem("cart"))
-    // console.log(cartProduct);
+    console.log(cartProduct);
     document.querySelector("#cartData").value = JSON.stringify(cartProduct)
     
     if (Array.isArray(cartProduct) && cartProduct.length > 0) {
@@ -143,11 +153,15 @@ function openCart() {
 
 
         imgCart.src = firstProduct.img
-        imgCart.alt = firstProduct.alt
+        imgCart.alt = firstProduct.head
         titleCart.innerText = firstProduct.head
         colorText.innerText = firstProduct.colorName
-        colorCircle.style.backgroundColor = `${firstProduct.color}`
-        sizeCart.innerText = `Розмір: ${firstProduct.size}`
+        if(firstProduct.color != null) {
+            colorCircle.style.backgroundColor = `${firstProduct.color}`
+        }
+        if(firstProduct.size != null) {
+            sizeCart.innerText = `Розмір: ${firstProduct.size}`
+        }
         priceCart.innerText = firstProduct.price
     } else {
         errorCart.style.display = "flex"

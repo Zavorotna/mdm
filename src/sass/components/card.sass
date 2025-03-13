@@ -62,7 +62,12 @@
 
 
 .color
-    gap: 5px
+    row-gap: 0
+    column-gap: 5px
+    flex-wrap: wrap
+    max-width: 30vw
+    +media(425)
+        width: auto
     +media(1024)
         gap: 10px
     label
@@ -89,3 +94,6 @@
 .price,
 .size
     padding-bottom: 15rem
+
+div.size
+    min-height: 47rem
