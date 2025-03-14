@@ -45,10 +45,13 @@ textarea
     resize: vertical
 
 select
-    width: 35%
+    font-size: 14px
+    width: 55%
     border: none
     border-bottom: 1px solid $black
     outline: none
+    +media(768)
+        width: 35%
 
 input[type='text'],
 input[type='tel'],
