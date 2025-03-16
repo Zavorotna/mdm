@@ -21,7 +21,7 @@ if ($_POST) {
                 $websiteURL = "ERROR IN MESSAGE";
             }
             $token = "7798336221:AAGJeMUYFzLFrJjKtX9y6ETnehWcg1qQr20"; // api телеграм бота
-            $chat_id = "-4725527914";
+            $chat_id = "-1002433912580";
             // $token = "6502486274:AAFqSGBvtvutHB8be-wTlsK3ETbssmLSEWo"; // api телеграм бота
             // $chat_id = "1066741091";
     
