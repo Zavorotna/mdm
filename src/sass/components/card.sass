@@ -95,6 +95,19 @@
 .size
     font-size: 14px
     padding-bottom: 15rem
+    label
+        position: relative
+        &::before
+            content: ""
+            position: absolute
+            width: 8px
+            height: 8px
+            top: 30%
+            right: 10rem
+            border-top: 1.5px solid $black
+            border-right: 1.5px solid $black
+            transform: translateY(-50%) rotate(135deg)
+            z-index: -1
 
 div.size
     min-height: 47rem

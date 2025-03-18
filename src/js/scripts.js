@@ -1,11 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let dark = document.querySelector(".dark-bgc")
+    const privacy = document.querySelector(".privacy_container"),
+        privacyBtn = document.querySelector(".privacyPolice"),
+        cancelPopupPr = document.querySelector(".cancel_popup")
+
+    privacyBtn.addEventListener("click", function (e) {
+        e.preventDefault()
+        privacy.style.display = "block"
+        dark.style.display = "block"
+    })
+
+    cancelPopupPr.addEventListener("click", function (e) {
+        e.preventDefault()
+        privacy.style.display = "none"
+        dark.style.display = "none"
+    })
     /*move text page*/
     const carousel = document.querySelector('.content-slider')
     if (document.querySelector(".content-slider h3")) {
         let items = [...document.querySelectorAll(".content-slider h3")],
             itemImgWidth = items[0].offsetWidth,
-            isAnimatingImg = false
-        
+            isAnimatingImg = false,
+            gap
+        if (window.innerWidth < 1024) {
+            gap = 37
+        } else {
+            gap = 0
+        }
         // console.log(itemImgWidth);
         function updateCarouselImg() {
             while (carousel.firstChild) {
@@ -30,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
                     // console.log(currentOffset);
-                    if (Math.abs(currentOffset) >= itemImgWidth + 37) {
+                    if (Math.abs(currentOffset) >= itemImgWidth + gap) {
                         currentOffset = 0;
                         updateCarouselImg()
                     }
@@ -47,20 +68,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector('.slider-images-1') && document.querySelector('.slider-images-2')) {
         const images1 = document.querySelectorAll('.slider-images-1 img'),
             images2 = document.querySelectorAll('.slider-images-2 img')
-    
+
         let currentImgIndex1 = 0,
             currentImgIndex2 = 0
-    
+
         if (images1.length > 0) images1[0].classList.add('active')
         if (images2.length > 0) images2[0].classList.add('active')
-    
+
         setInterval(() => {
             if (images1.length > 0) {
                 images1[currentImgIndex1].classList.remove('active')
                 currentImgIndex1 = (currentImgIndex1 + 1) % images1.length
                 images1[currentImgIndex1].classList.add('active')
             }
-    
+
             if (images2.length > 0) {
                 images2[currentImgIndex2].classList.remove('active')
                 currentImgIndex2 = (currentImgIndex2 + 1) % images2.length
@@ -68,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 3000)
     }
-    
+
 
     //burger
     if (document.querySelector(".burger")) {
@@ -86,11 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
         function cancelBurger() {
             menu.style.left = "-100%";
             dark.style.display = "none"
+            privacy.style.display = "none"
         }
         listItem.forEach(item => {
             item.addEventListener("click", cancelBurger)
         })
-        cancel.addEventListener("click", function(e) {
+        cancel.addEventListener("click", function (e) {
             e.preventDefault()
             cancelBurger()
         })
@@ -138,12 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (activeSection && activeSection.previousElementSibling) {
                     activeSection.previousElementSibling.classList.remove('readmore-active')
                 }
-    
+
                 sectionToShow.classList.add('visible')
                 if (sectionToShow.previousElementSibling) {
                     sectionToShow.previousElementSibling.classList.add('readmore-active')
                 }
-    
+
                 activeSection = sectionToShow
             }
         })
@@ -159,26 +181,27 @@ document.addEventListener("DOMContentLoaded", function () {
         darkBg = document.querySelector(".dark-bgc")
 
 
-        spivpraciaBtn.forEach(item => {
-            item.addEventListener("click", function(e) {
-                e.preventDefault()
-                popupSpivpracia.style.display = "block"
-                darkBg.style.display = "block"
-            })
-        })
-
-        function cancelPopup(e) {
+    spivpraciaBtn.forEach(item => {
+        item.addEventListener("click", function (e) {
             e.preventDefault()
-            popupSpivpracia.style.display = "none"
-            darkBg.style.display = "none"
-        }
+            popupSpivpracia.style.display = "block"
+            darkBg.style.display = "block"
+        })
+    })
 
-        cancelSpevpr.addEventListener("click", cancelPopup)
-        darkBg.addEventListener("click", cancelPopup)
+    function cancelPopup(e) {
+        e.preventDefault()
+        popupSpivpracia.style.display = "none"
+        darkBg.style.display = "none"
+    }
+
+    cancelSpevpr.addEventListener("click", cancelPopup)
+    darkBg.addEventListener("click", cancelPopup)
 
     //autoload video after click on document
-    if(document.querySelector('video') && window.innerWidth < 1024) {
+    if (document.querySelector('video') && window.innerWidth < 1024) {
         const video = document.querySelectorAll('video');
+
         function playVideo() {
             video.forEach(item => {
                 item.play();

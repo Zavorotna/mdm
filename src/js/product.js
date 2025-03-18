@@ -61,7 +61,7 @@ fetch('products.json')
             if(Array.isArray(product.size) && product.size.length > 0) {
                 const sizeLabel = document.createElement("label"),
                     sizeSelect = document.createElement("select")
-    
+                
                 product.size.forEach(size => {
                     const option = document.createElement("option")
                     option.value = size
@@ -69,7 +69,7 @@ fetch('products.json')
                     sizeSelect.appendChild(option)
                 })
                 sizeContainer.appendChild(sizeLabel)
-                sizeContainer.appendChild(sizeSelect)
+                sizeLabel.appendChild(sizeSelect)
                 
             }
             cardContainer.appendChild(sizeContainer)
