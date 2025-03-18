@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000)
     }
 
-
     //burger
     if (document.querySelector(".burger")) {
         const dark = document.querySelector(".dark-bgc"),
@@ -137,7 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //btn for block info
     const buttons = document.querySelectorAll('.nav a '),
-        sections = document.querySelectorAll('.description-more')
+        sections = document.querySelectorAll('.description-more'),
+        footerBtn = document.querySelectorAll(".menu_footer a")
     let activeSection = null
 
     function hideAllSections() {
@@ -147,8 +147,33 @@ document.addEventListener("DOMContentLoaded", function () {
     function deactivateAllButtons() {
         buttons.forEach(button => button.classList.remove('visible'))
     }
+    function deactivateAllButtons() {
+        footerBtn.forEach(button => button.classList.remove('visible'))
+    }
 
     buttons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            const target = button.getAttribute('data-target')
+
+            hideAllSections()
+            deactivateAllButtons()
+
+            const sectionToShow = document.getElementById(target)
+            if (sectionToShow) {
+                if (activeSection && activeSection.previousElementSibling) {
+                    activeSection.previousElementSibling.classList.remove('readmore-active')
+                }
+
+                sectionToShow.classList.add('visible')
+                if (sectionToShow.previousElementSibling) {
+                    sectionToShow.previousElementSibling.classList.add('readmore-active')
+                }
+
+                activeSection = sectionToShow
+            }
+        })
+    })
+    footerBtn.forEach(button => {
         button.addEventListener('click', function (event) {
             const target = button.getAttribute('data-target')
 
@@ -179,7 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
         popupSpivpracia = document.querySelector(".spivpracia_popup"),
         cancelSpevpr = document.querySelector(".cancel_spivpracia"),
         darkBg = document.querySelector(".dark-bgc")
-
 
     spivpraciaBtn.forEach(item => {
         item.addEventListener("click", function (e) {

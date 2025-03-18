@@ -21,6 +21,8 @@
         text-transform: none
         +media(1024)
             font-size: 20rem
+        +media(1150)
+            min-height: 73px
     button
         gap: 0
         justify-content: flex-end
@@ -50,7 +52,7 @@
             color: $white
             background-color: $black
             +media(768)
-                width: 50%
+                width: 35%
                 span
                     color: $white
                     width: 80%
@@ -65,10 +67,10 @@
     column-gap: 5px
     flex-wrap: wrap
     max-width: 30vw
-    +media(425)
-        width: 50%
-    +media(1024)
-        gap: 10px
+    // +media(425)
+    //     width: 50%
+    // +media(1024)
+    //     gap: 10px
         
     label
         position: relative
