@@ -21,12 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let items = [...document.querySelectorAll(".content-slider h3")],
             itemImgWidth = items[0].offsetWidth,
             isAnimatingImg = false,
-            gap
-        if (window.innerWidth < 1024) {
-            gap = 37
-        } else {
-            gap = 0
-        }
+            gap = 30
+            
         // console.log(itemImgWidth);
         function updateCarouselImg() {
             while (carousel.firstChild) {
