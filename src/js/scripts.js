@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             itemImgWidth = items[0].offsetWidth,
             isAnimatingImg = false,
             gap = 30
-            
+
         // console.log(itemImgWidth);
         function updateCarouselImg() {
             while (carousel.firstChild) {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
                     // console.log(currentOffset);
-                    if (Math.abs(currentOffset) >= itemImgWidth + gap) {
+                    if (Math.abs(currentOffset) >= itemImgWidth + 28) {
                         currentOffset = 0;
                         updateCarouselImg()
                     }
