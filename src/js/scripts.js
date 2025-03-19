@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!isAnimatingImg) {
                     isAnimatingImg = true
                     currentOffset -= 1;
+                    
 
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
