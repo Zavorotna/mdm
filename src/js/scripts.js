@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let dark = document.querySelector(".dark-bgc")
-    const privacy = document.querySelector(".privacy_container"),
+    const dark = document.querySelector(".dark-bgc"),
+        darkSucces = document.querySelector(".dark-bgc-succes"),
+        privacy = document.querySelector(".privacy_container"),
         privacyBtn = document.querySelector(".privacyPolice"),
-        cancelPopupPr = document.querySelector(".cancel_popup")
+        cancelPopupPr = document.querySelector(".cancel_popup"),
+        forms = document.querySelectorAll("form"),
+        succesPopup = document.querySelector("#successPopup"),
+        cartPopup = document.querySelector(".cart_popup")
 
     privacyBtn.addEventListener("click", function (e) {
         e.preventDefault()
@@ -13,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelPopupPr.addEventListener("click", function (e) {
         e.preventDefault()
         privacy.style.display = "none"
+        succesPopup.style.display = "none"
         dark.style.display = "none"
     })
     /*move text page*/
@@ -42,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!isAnimatingImg) {
                     isAnimatingImg = true
                     currentOffset -= 1;
-                    
+
 
                     carousel.style.transition = 'none'
                     carousel.style.transform = `translateX(${currentOffset}px)`
@@ -88,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //burger
     if (document.querySelector(".burger")) {
-        const dark = document.querySelector(".dark-bgc"),
-            burger = document.querySelector(".burger"),
+        const burger = document.querySelector(".burger"),
             menu = document.querySelector(".nav"),
             cancel = document.querySelector(".cancel"),
             listItem = menu.querySelectorAll("a")
@@ -143,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function deactivateAllButtons() {
         buttons.forEach(button => button.classList.remove('visible'))
     }
+
     function deactivateAllButtons() {
         footerBtn.forEach(button => button.classList.remove('visible'))
     }
@@ -212,12 +217,53 @@ document.addEventListener("DOMContentLoaded", function () {
     function cancelPopup(e) {
         e.preventDefault()
         popupSpivpracia.style.display = "none"
+        succesPopup.style.display = "none"
         darkBg.style.display = "none"
+        darkSucces.style.display = "none"
     }
 
     cancelSpevpr.addEventListener("click", cancelPopup)
     darkBg.addEventListener("click", cancelPopup)
+    darkSucces.addEventListener("click", cancelPopup)
 
+    //succes popup
+    succesPopup.style.transition = "opacity 0.5s ease"
+    succesPopup.style.opacity = "0"
+    succesPopup.style.zIndex = "-1"
+
+    darkSucces.style.transition = "opacity 0.5s ease"
+    darkSucces.style.opacity = "0"
+    
+    forms.forEach(form => {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault()
+            popupSpivpracia.style.display = "none"
+            cartPopup.style.display = "none"
+            succesPopup.style.display = "block"
+            succesPopup.style.zIndex = "10"
+            dark.style.display = "none"
+            darkSucces.style.display = "block"
+
+            setTimeout(() => {
+                succesPopup.style.opacity = "1"
+                succesPopup.style.visibility = "visible"
+                darkSucces.style.opacity = "1"
+            }, 10)
+
+            setTimeout(() => {
+                succesPopup.style.opacity = "0"
+                succesPopup.style.visibility = "hidden"
+                darkSucces.style.opacity = "0"
+
+                setTimeout(() => {
+                    darkSucces.style.display = "none"
+                    succesPopup.style.display = "none"
+                }, 500)
+
+                form.submit()
+            }, 4000)
+        })
+    })
     //autoload video after click on document
     if (document.querySelector('video') && window.innerWidth < 1024) {
         const video = document.querySelectorAll('video');
