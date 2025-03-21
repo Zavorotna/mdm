@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         privacy.style.display = "none"
         succesPopup.style.display = "none"
         dark.style.display = "none"
+        darkSucces.style.display = "none"
     })
     /*move text page*/
     const carousel = document.querySelector('.content-slider')
