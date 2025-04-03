@@ -228,43 +228,49 @@ document.addEventListener("DOMContentLoaded", function () {
     darkSucces.addEventListener("click", cancelPopup)
 
     //succes popup
+    console.log("+");
     succesPopup.style.transition = "opacity 0.5s ease"
     succesPopup.style.opacity = "0"
     succesPopup.style.zIndex = "-1"
 
     darkSucces.style.transition = "opacity 0.5s ease"
     darkSucces.style.opacity = "0"
-    
-    forms.forEach(form => {
-        form.addEventListener("submit", function (e) {
-            e.preventDefault()
-            popupSpivpracia.style.display = "none"
-            cartPopup.style.display = "none"
-            succesPopup.style.display = "block"
-            succesPopup.style.zIndex = "10"
-            dark.style.display = "none"
-            darkSucces.style.display = "block"
-
-            setTimeout(() => {
-                succesPopup.style.opacity = "1"
-                succesPopup.style.visibility = "visible"
-                darkSucces.style.opacity = "1"
-            }, 10)
-
-            setTimeout(() => {
-                succesPopup.style.opacity = "0"
-                succesPopup.style.visibility = "hidden"
-                darkSucces.style.opacity = "0"
+    document.querySelectorAll("form[action='sendorder.php'], form[action='senddata.php'], form[action='sendcontact.php']").forEach(form => {
+        form.addEventListener("submit", (e) => {
+            if (validateForm(form)) {
+                popupSpivpracia.style.display = "none"
+                cartPopup.style.display = "none"
+                succesPopup.style.display = "block"
+                succesPopup.style.zIndex = "10"
+                dark.style.display = "none"
+                darkSucces.style.display = "block"
 
                 setTimeout(() => {
-                    darkSucces.style.display = "none"
-                    succesPopup.style.display = "none"
-                }, 500)
+                    succesPopup.style.opacity = "1"
+                    succesPopup.style.visibility = "visible"
+                    darkSucces.style.opacity = "1"
+                }, 10);
 
-                form.submit()
-            }, 4000)
+
+
+                function closeSuccessPopup() {
+                    succesPopup.style.opacity = "0"
+                    succesPopup.style.visibility = "hidden"
+                    darkSucces.style.opacity = "0"
+
+                    setTimeout(() => {
+                        darkSucces.style.display = "none"
+                        succesPopup.style.display = "none"
+                    }, 500)
+                }
+                darkSucces.addEventListener("click", closeSuccessPopup) 
+                const closeButton = succesPopup.querySelector(".successPopup .cancel_popup")
+                closeButton.addEventListener("click", closeSuccessPopup)
+            }
         })
     })
+
+
     //autoload video after click on document
     if (document.querySelector('video') && window.innerWidth < 1024) {
         const video = document.querySelectorAll('video');

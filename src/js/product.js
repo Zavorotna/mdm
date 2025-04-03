@@ -274,6 +274,7 @@ document.querySelectorAll("form[action='sendorder.php'], form[action='senddata.p
     form.addEventListener("submit", (e) => {
         if (!validateForm(form)) {
             e.preventDefault()
+            console.log("+");
         }
     })
 })
